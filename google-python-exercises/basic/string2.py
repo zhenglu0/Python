@@ -1,4 +1,4 @@
-#!/usr/bin/python2.4 -tt
+#!/usr/bin/python -tt
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -17,7 +17,14 @@
 # Return the resulting string.
 def verbing(s):
   # +++your code here+++
-  return
+  word = s
+  if len(s) < 3:
+    pass
+  elif s[-3:] == 'ing':
+    word = word + 'ly'
+  else:
+    word = word + 'ing'   
+  return word
 
 
 # E. not_bad
@@ -30,7 +37,18 @@ def verbing(s):
 # This dinner is good!
 def not_bad(s):
   # +++your code here+++
-  return
+  index_not = s.find('not')
+  index_bad = s.find('bad')
+
+  result = s
+
+  # print index_not
+  # print index_bad
+
+  if index_not != -1 and index_bad != -1 and index_bad > index_not:
+    result = s[:index_not] + 'good' + s[index_bad+len('bad'):]
+
+  return result
 
 
 # F. front_back
@@ -42,7 +60,13 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
   # +++your code here+++
-  return
+  a_mid = (len(a) / 2 + 1) if len(a) % 2 == 1 else len(a) / 2
+  b_mid = (len(b) / 2 + 1) if len(b) % 2 == 1 else len(b) / 2
+
+  # print a_mid
+  # print b_mid
+
+  return a[:a_mid] + b[:b_mid] + a[a_mid:] + b[b_mid:]
 
 
 # Simple provided test() function used in main() to print
@@ -69,12 +93,14 @@ def main():
   test(not_bad('This dinner is not that bad!'), 'This dinner is good!')
   test(not_bad('This tea is not hot'), 'This tea is not hot')
   test(not_bad("It's bad yet not"), "It's bad yet not")
+  test(not_bad("It's bad yet bad"), "It's bad yet bad")
 
   print
   print 'front_back'
   test(front_back('abcd', 'xy'), 'abxcdy')
   test(front_back('abcde', 'xyz'), 'abcxydez')
   test(front_back('Kitten', 'Donut'), 'KitDontenut')
+  test(front_back('lz', 'y'), 'lyz')
 
 if __name__ == '__main__':
   main()
