@@ -41,8 +41,48 @@ def extract_names(filename):
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
   # +++your code here+++
-  return
+  try:
+    f = open(filename, 'rU')
+    # read text as a string
+    text = f.read()
+    f.close()
+    result = []
+    m = re.search(r'<h[^<]*>[^0-9]*(\d+)</h\d>',text)
+    if m:
+      year = m.group(1)
+      result.append(year)
+    #print result
+    rank_dict = {}
+    tuples = re.findall(r'<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>',text)
+    # print tuples
+    for t in tuples:
+      if t[1] in rank_dict:
+        # print t[1], "already in dictionary, will choose a larger value between" , t[0] , rank_dict[t[1]]
+        rank_dict[t[1]] = t[0] if t[0] > rank_dict[t[1]] else rank_dict[t[1]]
+      else:
+        rank_dict[t[1]] = t[0]
+      if t[2] in rank_dict:
+        # print t[2], "already in dictionary, will choose a larger value between" , t[0] , rank_dict[t[2]]
+        rank_dict[t[2]] = t[0] if t[0] > rank_dict[t[2]] else rank_dict[t[2]]
+      else:
+        rank_dict[t[2]] = t[0]
+    keys = sorted(rank_dict.keys())
+    for key in keys:
+      result.append(key + ' ' + rank_dict[key])
+      #print result
+    return result
+  except IOError:
+    print filename, "could not be opened."
 
+def print_to_file(results):
+  file = open('result.txt', 'w')
+  for result in results:
+    file.write('\n'.join(result))
+  file.close()
+
+def print_to_screen(results):
+  for result in results:
+    print '\n'.join(result)
 
 def main():
   # This command-line parsing code is provided.
@@ -62,7 +102,16 @@ def main():
 
   # +++your code here+++
   # For each filename, get the names, then either print the text output
-  # or write it to a summary file
-  
+  # or write it to a summary file  
+  results = []
+  for arg in args:
+    result = extract_names(arg)
+    results.append(result)
+
+  if summary:
+    print_to_file(results)
+  else:
+    print_to_screen(results)
+
 if __name__ == '__main__':
   main()
