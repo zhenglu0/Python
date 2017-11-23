@@ -10,6 +10,8 @@ import os
 import re
 import sys
 import urllib
+import time
+from multiprocessing import Pool
 
 """Logpuzzle exercise
 Given an apache logfile, find the puzzle urls and download the images.
@@ -19,8 +21,15 @@ Here's what a puzzle url looks like:
 """
 protocal = 'http://'
 
+def file_download(url_filepath):
+  try:
+    print 'Download', url_filepath[0], 'as', url_filepath[1]
+    ufile = urllib.urlretrieve(url_filepath[0], url_filepath[1])
+  except Exception as e:
+    print e
+
 def find_suffix_pattern(url):
-  print url
+  # print url
   match = re.search(r'-(\w\w\w\w).jpg', url)
   #print match.group(1)
   return match.group(1)
@@ -32,7 +41,7 @@ def read_urls(filename):
   increasing order."""
   # +++your code here+++
   hostname = filename[filename.index('_')+1:]
-  print hostname
+  # print hostname
   try:
     ## Either of these two lines could throw an IOError, say
     ## if the file does not exist or the read() encounters a low level error.
@@ -60,30 +69,41 @@ def download_images(img_urls, dest_dir):
   # +++your code here+++
   if not os.path.exists(dest_dir):
     os.mkdir(dest_dir)
-
+  
+  url_filepath = []
+  filenames = []
+  
   try:
     suffix = 0
-    filenames = []
     for url in img_urls:
       filename = 'img'+str(suffix)
       suffix += 1
       filepath = os.path.join(dest_dir, filename)
-      # print filename
-      # print filepath
       filenames.append(filename)
-      ufile = urllib.urlretrieve(url, filepath)
-      #print ufile
-      print 'Download', url, 'as', filename
-      # create the index.html file to diaplay the image
-      f = open(os.path.join(dest_dir,'index.html'), 'w')
-      html = '<html><body>\n'
-      for filename in filenames:
-        html += '<img src="' + filename + '">'
-      html += '\n</html></body>\n'
-      f.write(html)
+      url_filepath.append((url, filepath))
   except IOError:
     print 'problem reading url:', url
 
+  # Use multithreading to increase download speed
+
+  print url_filepath
+
+  # https://stackoverflow.com/questions/31784484/how-to-parallelized-file-downloads
+  # https://docs.python.org/2/library/multiprocessing.html
+  #Pool(20).map(file_download, url_filepath)
+  pool = Pool(20)
+  pool.imap_unordered(file_download, url_filepath)
+  pool.close()
+  pool.join()
+
+  # create the index.html file to diaplay the image
+  f = open(os.path.join(dest_dir,'index.html'), 'w')
+  html = '<html><body>\n'
+  for filename in filenames:
+    html += '<img src="' + filename + '">'
+  html += '\n</html></body>\n'
+  f.write(html)
+  
 def main():
   args = sys.argv[1:]
 
