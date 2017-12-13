@@ -1,5 +1,9 @@
 Python
 ------
+The Difference Between “is” and “==” in Python
+
+https://dbader.org/blog/difference-between-is-and-equals-in-python
+
 Comprehending Python’s Comprehensions
 
 https://dbader.org/blog/list-dict-set-comprehensions-in-python
