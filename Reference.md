@@ -1,5 +1,9 @@
 Python
 ------
+Comprehending Python’s Comprehensions
+
+https://dbader.org/blog/list-dict-set-comprehensions-in-python
+
 The 4 Major Ways to Do String Formatting in Python
 
 https://dbader.org/blog/python-string-formatting
