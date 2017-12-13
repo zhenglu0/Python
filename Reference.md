@@ -1,5 +1,8 @@
 Python
 ------
+The 4 Major Ways to Do String Formatting in Python
+
+https://dbader.org/blog/python-string-formatting
 
 The Meaning of Underscores in Python
 
