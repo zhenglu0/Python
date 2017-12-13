@@ -1,5 +1,10 @@
 Python
 ------
+
+How to use Python’s min() and max() with nested lists
+
+https://dbader.org/blog/python-min-max-and-nested-lists
+
 The Difference Between “is” and “==” in Python
 
 https://dbader.org/blog/difference-between-is-and-equals-in-python
