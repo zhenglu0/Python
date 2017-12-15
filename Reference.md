@@ -1,6 +1,10 @@
 Python
 ------
 
+Swap two variables in Python
+
+https://stackoverflow.com/questions/14836228/is-there-a-standardized-method-to-swap-two-variables-in-python
+
 How to use Python’s min() and max() with nested lists
 
 https://dbader.org/blog/python-min-max-and-nested-lists
