@@ -1,6 +1,10 @@
 Python
 ------
 
+Python Operator Precedence
+
+http://www.mathcs.emory.edu/~valerie/courses/fall10/155/resources/op_precedence.html
+
 Swap two variables in Python
 
 https://stackoverflow.com/questions/14836228/is-there-a-standardized-method-to-swap-two-variables-in-python
