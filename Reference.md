@@ -1,5 +1,10 @@
 Python
 ------
+
+Generators
+
+https://wiki.python.org/moin/Generators
+
 Global, Local and nonlocal Variables
 
 https://www.python-course.eu/python3_global_vs_local_variables.php
