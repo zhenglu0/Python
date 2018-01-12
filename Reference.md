@@ -1,6 +1,10 @@
 Python
 ------
 
+max-heap implementation in Python
+
+https://stackoverflow.com/questions/2501457/what-do-i-use-for-a-max-heap-implementation-in-python/40455775
+
 Generators
 
 https://wiki.python.org/moin/Generators
