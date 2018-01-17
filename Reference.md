@@ -1,5 +1,9 @@
 Python
 ------
+*args and **kwargs in python explained
+
+https://pythontips.com/2013/08/04/args-and-kwargs-in-python-explained/
+
 The self variable in python explained
 
 https://pythontips.com/2013/08/07/the-self-variable-in-python-explained/
