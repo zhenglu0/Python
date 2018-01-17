@@ -1,6 +1,10 @@
 Python
 ------
 
+Adding Support for User-defined Classes
+
+http://python-history.blogspot.com/2009/02/adding-support-for-user-defined-classes.html
+
 max-heap implementation in Python
 
 https://stackoverflow.com/questions/2501457/what-do-i-use-for-a-max-heap-implementation-in-python/40455775
