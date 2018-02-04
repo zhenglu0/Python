@@ -1,5 +1,9 @@
 Python
 ------
+NumPy Manual
+
+https://docs.scipy.org/doc/numpy/index.html
+
 *args and **kwargs in python explained
 
 https://pythontips.com/2013/08/04/args-and-kwargs-in-python-explained/
