@@ -1,5 +1,10 @@
 Python
 ------
+
+Python Main Function with Examples
+
+https://www.guru99.com/learn-python-main-function-with-examples-understand-main.html
+
 NumPy Manual
 
 https://docs.scipy.org/doc/numpy/index.html
