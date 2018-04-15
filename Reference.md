@@ -1,5 +1,9 @@
 Python
 ------
+Iterators & Generators
+
+https://anandology.com/python-practice-book/iterators.html
+
 Python Regular Expressions Examples – Re Match Search FindAll
 
 https://www.thegeekstuff.com/2014/07/python-regex-examples/
